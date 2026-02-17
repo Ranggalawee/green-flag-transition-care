@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Edukasi - GREEN FLAG Transition Care</title>
+
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Ranggalawee/images/main/greenflag.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fdf9;
+            --accent-green: #5cb85c;
+            --accent-green-dark: #4a934a;
+            --accent-green-light: #7ec87e;
+            --text-primary: #2c3e2c;
+            --text-secondary: #5a6d5a;
+            --border-color: rgba(92, 184, 92, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -20%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(92, 184, 92, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            left: -20%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(126, 200, 126, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 0 2rem;
+            text-align: center;
+            position: relative;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: var(--accent-green);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(92, 184, 92, 0.3);
+        }
+
+        .back-button:hover {
+            background: var(--accent-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(92, 184, 92, 0.4);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            margin-top: 4rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .video-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 40px rgba(92, 184, 92, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(92, 184, 92, 0.2);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-green);
+        }
+
+        .separator {
+            color: var(--border-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--accent-green);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(92, 184, 92, 0.4);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-green-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(92, 184, 92, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .back-button {
+                position: relative;
+                top: 0;
+                left: 0;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .back-to-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <a href="index.html" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
+            </a>
+            <h1>Video Edukasi</h1>
+            <p class="subtitle">Kumpulan video edukasi mengenai kondisi khusus pasien yang dapat dipilih dan
+                diputar ulang sesuai kebutuhan</p>
+        </header>
+
+        <!-- Video Grid -->
+        <div class="video-grid">
+            <!-- Video 1 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Pengenalan Transition Care</h3>
+                    <p class="video-description">Video pengenalan mengenai layanan transition care dan pentingnya
+                        perawatan transisi untuk pasien.</p>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Perawatan Pasien Diabetes</h3>
+                    <p class="video-description">Panduan lengkap merawat pasien dengan kondisi diabetes di rumah.</p>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Perawatan Luka Pasca Operasi</h3>
+                    <p class="video-description">Cara merawat luka pasca operasi dengan benar untuk mencegah infeksi.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Manajemen Obat di Rumah</h3>
+                    <p class="video-description">Tips mengatur dan memberikan obat kepada pasien dengan aman dan tepat
+                        waktu.</p>
+                </div>
+            </div>
+
+            <!-- Video 5 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Perawatan Pasien Stroke</h3>
+                    <p class="video-description">Panduan merawat pasien stroke di rumah dan membantu proses
+                        rehabilitasi.</p>
+                </div>
+            </div>
+
+            <!-- Video 6 -->
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Nutrisi untuk Pasien</h3>
+                    <p class="video-description">Pentingnya nutrisi yang tepat untuk mendukung pemulihan pasien.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <span>SICU RSUP Dr. Sardjito Yogyakarta</span>
+                <span class="separator">•</span>
+                <a href="mailto:rsssicu@gmail.com" class="footer-link">
+                    <i class="fa-solid fa-envelope"></i>rsssicu@gmail.com
+                </a>
+                <span class="separator">•</span>
+                <a href="https://wa.me/6282220360243" target="_blank" class="footer-link">
+                    <i class="fa-brands fa-whatsapp"></i> 0822 2036 0243
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Back to Top Button functionality
+        const backToTopButton = document.getElementById('backToTop');
+
+        // Show button when user scrolls down 300px
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        // Scroll to top when button is clicked
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>
