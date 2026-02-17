@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video & FAQ - Website Statis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fdf9;
+            --accent-green: #5cb85c;
+            --accent-green-dark: #4a934a;
+            --accent-green-light: #7ec87e;
+            --text-primary: #2c3e2c;
+            --text-secondary: #5a6d5a;
+            --border-color: rgba(92, 184, 92, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background decoration */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -20%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(92, 184, 92, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            left: -20%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(126, 200, 126, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Video Section */
+        .video-section {
+            margin: 4rem 0;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-green-dark);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-green), transparent);
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            margin-top: -1rem;
+            max-width: 800px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 20px 60px rgba(92, 184, 92, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px rgba(92, 184, 92, 0.25);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 20px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 6rem 0;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .faq-container {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 40px rgba(92, 184, 92, 0.1);
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(92, 184, 92, 0.15);
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 1.5rem;
+            background: rgba(92, 184, 92, 0.05);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-green);
+            transition: all 0.3s ease;
+            position: relative;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background: rgba(92, 184, 92, 0.12);
+            border-left-color: var(--accent-green-dark);
+            transform: translateX(5px);
+        }
+
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--accent-green);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+            color: var(--accent-green-dark);
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-green);
+        }
+
+        .separator {
+            color: var(--border-color);
+        }
+
+        /* Closing Statement */
+        .closing-statement {
+            text-align: center;
+            margin: 6rem 0;
+            animation: fadeInUp 1s ease-out 0.8s both;
+            padding: 0 1rem;
+        }
+
+        .closing-text-primary {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .closing-text-highlight {
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--accent-green-dark);
+            font-weight: 700;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Logo Container */
+        .logo-container {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .header-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 3rem 0;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                margin-top: 3rem;
+                /* Make space for logos on mobile if needed */
+            }
+
+            .logo-container {
+                position: relative;
+                top: 0;
+                right: 0;
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .faq-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .faq-question {
+                font-size: 1.1rem;
+                padding: 1.2rem;
+            }
+
+            .faq-answer {
+                font-size: 1rem;
+            }
+        }
+
+        /* Decorative elements */
+        .decorative-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        .dot-1 {
+            top: 10%;
+            left: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .dot-2 {
+            top: 30%;
+            right: 10%;
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        .dot-3 {
+            bottom: 20%;
+            left: 15%;
+            animation: float 7s ease-in-out infinite 2s;
+        }
+
+        .dot-4 {
+            bottom: 40%;
+            right: 20%;
+            animation: float 9s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Decorative elements -->
+    <div class="decorative-dot dot-1"></div>
+    <div class="decorative-dot dot-2"></div>
+    <div class="decorative-dot dot-3"></div>
+    <div class="decorative-dot dot-4"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/Ranggalawee/images/main/WhatsApp%20Image%202026-02-16%20at%209.45.55%20AM.jpeg"
+                    alt="Logo 1" class="header-logo">
+                <img src="https://raw.githubusercontent.com/Ranggalawee/images/main/WhatsApp%20Image%202026-02-16%20at%2010.12.42%20AM.jpeg"
+                    alt="Logo 2" class="header-logo">
+            </div>
+            <h1>GREEN FLAG Transition Care</h1>
+            <p class="subtitle">Jelajahi konten video dan temukan jawaban atas pertanyaan Anda</p>
+        </header>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <h2 class="section-title">Video Edukasi</h2>
+            <p class="section-description">Menu di bawah ini berisi video-video singkat mengenai kondisi khusus pasien
+                yang dapat dipilih dan diputar ulang sesuai kebutuhan</p>
+            <div class="video-wrapper">
+                <!-- Ganti VIDEO_ID dengan ID video YouTube Anda -->
+                <!-- Contoh: https://www.youtube.com/watch?v=dQw4w9WgXcQ -> ID: dQw4w9WgXcQ -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
+            <p class="section-description">Menu di bawah ini berisi kumpulan pertanyaan yang sering diajukan terkait
+                kondisi khusus pasien. Anda dapat menemukan jawaban secara cepat dan jelas tanpa perlu menghubungi
+                petugas secara langsung.</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">Apa itu website statis?</div>
+                    <div class="faq-answer">
+                        Website statis adalah website yang kontennya tidak berubah secara dinamis. Halaman-halamannya
+                        ditulis dalam HTML dan ditampilkan kepada setiap pengunjung dengan cara yang sama. Website
+                        statis lebih cepat, aman, dan mudah di-hosting.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Bagaimana cara embed video YouTube?</div>
+                    <div class="faq-answer">
+                        Untuk embed video YouTube, Anda perlu menggunakan tag iframe dengan URL embed YouTube. Ambil ID
+                        video dari URL YouTube (bagian setelah "v="), lalu masukkan ke dalam format:
+                        https://www.youtube.com/embed/VIDEO_ID. Pastikan untuk mengatur atribut allow dan
+                        allowfullscreen agar video dapat diputar dengan baik.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Apakah website ini responsif?</div>
+                    <div class="faq-answer">
+                        Ya, website ini dibuat dengan desain responsif menggunakan CSS modern. Ini berarti tampilan akan
+                        menyesuaikan dengan ukuran layar perangkat yang digunakan, baik itu desktop, tablet, maupun
+                        smartphone. Kami menggunakan teknik seperti flexbox, media queries, dan unit relatif untuk
+                        memastikan pengalaman yang optimal di semua perangkat.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Bagaimana cara mengubah konten website ini?</div>
+                    <div class="faq-answer">
+                        Untuk mengubah konten, Anda cukup mengedit file HTML ini. Untuk video, ganti ID video di bagian
+                        src iframe. Untuk FAQ, tambahkan atau ubah div dengan class "faq-item" sesuai kebutuhan. Semua
+                        styling sudah diatur di bagian CSS, jadi Anda tidak perlu file terpisah.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Apakah saya perlu server khusus untuk hosting?</div>
+                    <div class="faq-answer">
+                        Tidak, karena ini adalah website statis, Anda bisa meng-hostingnya di layanan gratis seperti
+                        GitHub Pages, Netlify, Vercel, atau Cloudflare Pages. Anda juga bisa menggunakan web hosting
+                        tradisional. Tidak diperlukan database atau server-side processing, sehingga biaya hosting
+                        sangat minimal atau bahkan gratis.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing Statement -->
+        <div class="closing-statement">
+            <h3 class="closing-text-primary">Peran Anda sangat berarti demi menjaga orang yang Anda sayangi</h3>
+            <p class="closing-text-highlight">Bersama Kami, Keluarga Siaga, Pasien Terjaga</p>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <span>&copy; 2026 My Hospital</span>
+                <span class="separator">•</span>
+                <a href="mailto:user@gmail.com" class="footer-link">
+                    <i class="fa-solid fa-envelope"></i> user@gmail.com
+                </a>
+                <span class="separator">•</span>
+                <a href="https://wa.me/62812345678910" target="_blank" class="footer-link">
+                    <i class="fa-brands fa-whatsapp"></i> 012345678910
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // FAQ Accordion functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+
+                question.addEventListener('click', () => {
+                    // Toggle current item
+                    item.classList.toggle('active');
+
+                    // Optional: Close other items (uncomment if you want accordion behavior)
+                    // faqItems.forEach(otherItem => {
+                    //     if (otherItem !== item) {
+                    //         otherItem.classList.remove('active');
+                    //     }
+                    // });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
