@@ -153,91 +153,115 @@
             line-height: 1.5;
         }
 
-        /* Intro Card */
+        /* Intro Expandable Button */
         .intro-section {
-            padding: 1rem 1.5rem 0;
+            padding: 1.5rem 1.5rem 0;
             animation: fadeInUp 0.8s ease-out 0.15s both;
         }
 
-        .intro-card {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 1.2rem 1.3rem;
-            border: 1px solid rgba(77, 184, 215, 0.15);
-            box-shadow: 0 4px 16px rgba(77, 184, 215, 0.1);
+        .intro-wrapper {
             position: relative;
+            margin-bottom: 24px;
         }
 
-        .intro-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-blue-dark);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 0.6rem;
+        .intro-btn {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            color: var(--accent-blue-dark);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            width: 100%;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid rgba(77, 184, 215, 0.3);
+            box-shadow: 0 4px 15px rgba(77, 184, 215, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
 
-        .intro-text {
+        .intro-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(77, 184, 215, 0.15);
+        }
+
+        .intro-btn-icon {
+            width: 38px;
+            height: 38px;
+            background: rgba(26, 133, 179, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            color: var(--accent-blue);
+        }
+
+        .intro-btn-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s ease;
+            color: var(--accent-blue);
+        }
+
+        .intro-btn.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .intro-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+            margin-top: -24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-content.expanded {
+            max-height: 800px;
+            opacity: 1;
+        }
+
+        .intro-content-inner {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(10px);
+            border-radius: 0 0 24px 24px;
+            padding: 2.5rem 1.5rem 1.2rem;
+            border: 1px solid rgba(77, 184, 215, 0.15);
+            border-top: none;
+            box-shadow: 0 4px 16px rgba(77, 184, 215, 0.1);
             font-size: 0.9rem;
             color: var(--text-secondary);
             line-height: 1.8;
-            overflow: hidden;
-            max-height: 4.5em;
-            transition: max-height 0.5s ease;
-        }
-
-        .intro-text.expanded {
-            max-height: 500px;
-        }
-
-        .intro-text p {
-            margin-bottom: 1rem;
             text-align: justify;
             hyphens: auto;
         }
 
-        .intro-text p:last-child {
+        .intro-content-inner p {
+            margin-bottom: 1rem;
+        }
+
+        .intro-content-inner p:last-child {
             margin-bottom: 0;
-        }
-
-        .intro-toggle {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            background: none;
-            border: none;
-            color: var(--accent-blue-dark);
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            padding: 0.5rem 0 0;
-            transition: color 0.3s ease;
-        }
-
-        .intro-toggle:hover {
-            color: var(--accent-blue);
-        }
-
-        .intro-toggle i {
-            font-size: 0.7rem;
-            transition: transform 0.3s ease;
-        }
-
-        .intro-toggle.active i {
-            transform: rotate(180deg);
         }
 
         /* Menu Buttons */
         .menu-section {
-            padding: 1.5rem 1.5rem 1rem;
+            padding: 1rem 1.5rem 1.5rem;
             display: flex;
             flex-direction: column;
-            gap: 0.9rem;
+            gap: 1rem;
             animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
@@ -426,28 +450,29 @@
 
         <!-- Kata Pengantar -->
         <div class="intro-section">
-            <div class="intro-card">
-                <div class="intro-label">
-                    <i class="fa-solid fa-book-open"></i> Pengantar Web
-                </div>
-                <div class="intro-text" id="introText">
-                    <p>Perpindahan pasien dari ruang intensif bukanlah akhir dari perawatan kritis, melainkan
-                        <strong>awal dari
-                            fase pemulihan</strong> yang tetap membutuhkan <strong>kewaspadaan, pemantauan, dan
-                            kolaborasi yang kuat</strong> antara
-                        tenaga kesehatan dan keluarga. Berbagai penelitian menunjukkan bahwa periode transisi ini
-                        merupakan <strong>fase yang rentan</strong> terhadap perburukan kondisi dan risiko readmisi ke
-                        ruang intensif.
-                    </p>
-                    <p>Melalui web ini, diharapkan keluarga dapat menjadi <strong>lebih paham mengenai kondisi
-                            pasien</strong> dan
-                        perannya sebagai pendamping pasien, sehingga <strong>perburukan kondisi dan readmisi ke ruang
-                            intensif
-                            dapat dicegah.</strong></p>
-                </div>
-                <button class="intro-toggle" id="introToggle" onclick="toggleIntro()">
-                    Baca selengkapnya <i class="fa-solid fa-chevron-down"></i>
+            <div class="intro-wrapper">
+                <button class="intro-btn" id="introToggle" onclick="toggleIntro()">
+                    <span class="intro-btn-icon"><i class="fa-solid fa-book-open"></i></span>
+                    <span class="intro-btn-text">Pengantar Web</span>
+                    <i class="fa-solid fa-chevron-down toggle-icon"></i>
                 </button>
+                <div class="intro-content" id="introText">
+                    <div class="intro-content-inner">
+                        <p>Perpindahan pasien dari ruang intensif bukanlah akhir dari perawatan kritis, melainkan
+                            <strong>awal dari fase pemulihan</strong> yang tetap membutuhkan <strong>kewaspadaan,
+                                pemantauan, dan
+                                kolaborasi yang kuat</strong> antara tenaga kesehatan dan keluarga. Berbagai penelitian
+                            menunjukkan bahwa periode transisi ini
+                            merupakan <strong>fase yang rentan</strong> terhadap perburukan kondisi dan risiko readmisi
+                            ke
+                            ruang intensif.
+                        </p>
+                        <p>Melalui web ini, diharapkan keluarga dapat menjadi <strong>lebih paham mengenai kondisi
+                                pasien</strong> dan perannya sebagai pendamping pasien, sehingga <strong>perburukan
+                                kondisi dan readmisi ke ruang
+                                intensif dapat dicegah.</strong></p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -493,11 +518,6 @@
             const btn = document.getElementById('introToggle');
             text.classList.toggle('expanded');
             btn.classList.toggle('active');
-            if (text.classList.contains('expanded')) {
-                btn.innerHTML = 'Sembunyikan <i class="fa-solid fa-chevron-down"></i>';
-            } else {
-                btn.innerHTML = 'Baca selengkapnya <i class="fa-solid fa-chevron-down"></i>';
-            }
         }
     </script>
 </body>
