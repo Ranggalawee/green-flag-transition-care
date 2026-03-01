@@ -11,19 +11,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fdf9;
-            --accent-green: #5cb85c;
-            --accent-green-dark: #4a934a;
-            --accent-green-light: #7ec87e;
-            --text-primary: #2c3e2c;
-            --text-secondary: #5a6d5a;
-            --border-color: rgba(92, 184, 92, 0.2);
+            --bg-gradient-start: #c8e8f2;
+            --bg-gradient-end: #dff0f7;
+            --accent-blue: #1A85B3;
+            --accent-blue-dark: #146d94;
+            --accent-blue-light: #3AA0CC;
+            --btn-gradient-start: #1A85B3;
+            --btn-gradient-end: #3AA0CC;
+            --text-primary: #1a3a4a;
+            --text-secondary: #4a7080;
+            --text-white: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --shadow-color: rgba(77, 184, 215, 0.2);
+            --border-color: rgba(77, 184, 215, 0.2);
         }
 
         * {
@@ -33,113 +38,94 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg-primary);
+            font-family: 'Poppins', 'DM Sans', sans-serif;
+            background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
             color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            right: -20%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(92, 184, 92, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            bottom: -30%;
-            left: -20%;
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(126, 200, 126, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .container {
-            max-width: 1200px;
+        .page-wrapper {
+            max-width: 680px;
             margin: 0 auto;
-            padding: 0 2rem;
+            background: linear-gradient(180deg, var(--bg-gradient-start) 0%, #f0fafd 40%, #ffffff 100%);
+            min-height: 100vh;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
             position: relative;
-            z-index: 1;
+            padding: 0 0 2rem;
         }
 
         /* Header */
-        header {
-            padding: 3rem 0 2rem;
+        .page-header {
+            background: linear-gradient(135deg, var(--accent-blue-dark), var(--accent-blue), var(--accent-blue-light));
+            padding: 2rem 1.5rem 2.5rem;
             text-align: center;
             position: relative;
-            animation: fadeInDown 1s ease-out;
+            animation: fadeInDown 0.8s ease-out;
         }
 
         .back-button {
             position: absolute;
-            top: 2rem;
-            left: 2rem;
-            background: var(--accent-green);
+            top: 1.2rem;
+            left: 1.2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 15px rgba(92, 184, 92, 0.3);
+            gap: 0.4rem;
         }
 
         .back-button:hover {
-            background: var(--accent-green-dark);
+            background: rgba(255, 255, 255, 0.35);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(92, 184, 92, 0.4);
         }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            margin-top: 4rem;
-            letter-spacing: -0.02em;
+        .page-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: white;
+            margin-top: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
+        .page-header .subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
             font-weight: 400;
-            max-width: 800px;
+            max-width: 500px;
             margin: 0 auto;
+        }
+
+        /* Content Area */
+        .content-area {
+            padding: 2rem 1.5rem;
         }
 
         /* FAQ Section */
         .faq-section {
-            margin: 4rem 0;
-            animation: fadeInUp 1s ease-out 0.3s both;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
         .faq-container {
-            background: var(--bg-secondary);
-            border-radius: 20px;
-            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
             border: 1px solid var(--border-color);
-            box-shadow: 0 10px 40px rgba(92, 184, 92, 0.1);
+            box-shadow: 0 4px 20px var(--shadow-color);
         }
 
         .faq-category {
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
         }
 
         .faq-category:last-child {
@@ -147,27 +133,27 @@
         }
 
         .faq-category-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
             font-weight: 700;
-            color: var(--accent-green-dark);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 2px solid var(--accent-green);
+            color: var(--accent-blue-dark);
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--accent-blue);
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.6rem;
         }
 
         .faq-category-icon {
-            font-size: 1.5rem;
-            color: var(--accent-green);
+            font-size: 1.1rem;
+            color: var(--accent-blue);
         }
 
         .faq-item {
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(92, 184, 92, 0.15);
-            padding-bottom: 1.5rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(77, 184, 215, 0.1);
+            padding-bottom: 0.8rem;
         }
 
         .faq-item:last-child {
@@ -177,73 +163,86 @@
         }
 
         .faq-question {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 0.95rem;
+            font-weight: 600;
             color: var(--text-primary);
             cursor: pointer;
-            padding: 1.5rem;
-            background: rgba(92, 184, 92, 0.05);
+            padding: 1rem 3rem 1rem 1rem;
+            background: rgba(77, 184, 215, 0.06);
             border-radius: 12px;
-            border-left: 4px solid var(--accent-green);
+            border-left: 3px solid var(--accent-blue);
             transition: all 0.3s ease;
             position: relative;
             user-select: none;
         }
 
         .faq-question:hover {
-            background: rgba(92, 184, 92, 0.12);
-            border-left-color: var(--accent-green-dark);
-            transform: translateX(5px);
+            background: rgba(77, 184, 215, 0.12);
+            border-left-color: var(--accent-blue-dark);
+            transform: translateX(3px);
         }
 
         .faq-question::after {
             content: '+';
             position: absolute;
-            right: 1.5rem;
+            right: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 300;
-            color: var(--accent-green);
+            color: var(--accent-blue);
             transition: transform 0.3s ease, color 0.3s ease;
         }
 
         .faq-item.active .faq-question::after {
             content: '−';
-            color: var(--accent-green-dark);
+            color: var(--accent-blue-dark);
             transform: translateY(-50%) rotate(180deg);
+        }
+
+        .faq-item.active .faq-question {
+            background: rgba(77, 184, 215, 0.12);
+            border-left-color: var(--accent-blue-dark);
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease, padding 0.4s ease;
-            padding: 0 1.5rem;
+            padding: 0 1rem;
             color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 0.9rem;
+            line-height: 1.7;
         }
 
         .faq-item.active .faq-answer {
             max-height: 500px;
-            padding: 1.5rem;
+            padding: 1rem;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem 0;
+            padding: 1.5rem;
             color: var(--text-secondary);
             border-top: 1px solid var(--border-color);
-            margin-top: 6rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
         }
 
         .footer-content {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            gap: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .footer-link {
@@ -251,23 +250,58 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
             transition: color 0.3s ease;
+            font-size: 0.8rem;
         }
 
         .footer-link:hover {
-            color: var(--accent-green);
+            color: var(--accent-blue);
         }
 
         .separator {
-            color: var(--border-color);
+            color: rgba(77, 184, 215, 0.3);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--btn-gradient-start), var(--btn-gradient-end));
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            border: none;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: linear-gradient(135deg, var(--accent-blue-dark), var(--accent-blue));
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(77, 184, 215, 0.5);
         }
 
         /* Animations */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
-                transform: translateY(-30px);
+                transform: translateY(-20px);
             }
 
             to {
@@ -279,7 +313,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
 
             to {
@@ -288,497 +322,818 @@
             }
         }
 
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--accent-green);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(92, 184, 92, 0.4);
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 1000;
-        }
-
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--accent-green-dark);
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(92, 184, 92, 0.6);
-        }
-
         /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
+        @media (min-width: 681px) {
+            body {
+                background: linear-gradient(135deg, #c8e6ef 0%, #e0f2f7 50%, #f5fbfd 100%);
             }
 
-            .back-button {
-                position: relative;
-                top: 0;
-                left: 0;
+            .page-wrapper {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                border-radius: 24px;
+                min-height: calc(100vh - 4rem);
+                overflow: hidden;
             }
+        }
 
-            .faq-container {
-                padding: 2rem 1.5rem;
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.3rem;
             }
 
             .faq-question {
-                font-size: 1.1rem;
-                padding: 1.2rem;
+                font-size: 0.85rem;
+                padding: 0.8rem 2.5rem 0.8rem 0.8rem;
             }
 
             .faq-answer {
-                font-size: 1rem;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .back-to-top {
-                bottom: 1.5rem;
-                right: 1.5rem;
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
+                font-size: 0.85rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="page-wrapper">
         <!-- Header -->
-        <header>
+        <div class="page-header">
             <a href="index.html" class="back-button">
-                <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
+                <i class="fa-solid fa-arrow-left"></i> Kembali
             </a>
             <h1>Pertanyaan yang Sering Diajukan</h1>
-            <p class="subtitle">Pertanyaan yang sering diajukan terkait kondisi khusus pasien beserta jawaban</p>
-        </header>
+            <p class="subtitle">Halaman FAQ yang menjawab pertanyaan umum keluarga dan disusun berdasarkan kebutuhan
+                nyata di bangsal non-intensif, sehingga informasi yang diberikan relevan, praktis, dan aplikatif.</p>
+        </div>
 
-        <!-- FAQ Section -->
-        <section class="faq-section">
-            <div class="faq-container">
+        <!-- Content -->
+        <div class="content-area">
 
-                <div class="faq-category">
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apa alasan pasien dipindahkan dari ruang rawat intensif?</div>
-                        <div class="faq-answer">
-                            Karena kondisi pasien sudah stabil dan tidak memerlukan monitoring intensif lagi.
+            <!-- General FAQ -->
+            <section class="faq-section">
+                <div class="faq-container">
+                    <div class="faq-category">
+                        <div class="faq-item">
+                            <div class="faq-question">Apa alasan pasien dipindahkan dari ruang rawat intensif?</div>
+                            <div class="faq-answer">
+                                Karena kondisi pasien sudah stabil dan tidak memerlukan monitoring intensif lagi.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah pasien sudah sembuh sepenuhnya?
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah pasien sudah sembuh sepenuhnya?</div>
+                            <div class="faq-answer">
+                                Belum, pasien masih dalam fase pemulihan.
+                            </div>
                         </div>
-                        <div class="faq-answer">
-                            Belum, pasien masih dalam fase pemulihan.
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah pasien masih berisiko kembali ke ruang rawat intensif?
+                            </div>
+                            <div class="faq-answer">
+                                Ya, bila pasien mengalami perburukan yang mengharuskan penangan dan pemantauan
+                                intensif, terutama jika terjadi gangguan pernapasan, penurunan kesadaran, gangguan
+                                sirkulasi darah, atau terjadi infeksi.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah pasien masih berisiko kembali ke ruang rawat intensif?</div>
-                        <div class="faq-answer">
-                            Ya, bila pasien mengalami perburukan yang mengharuskan penangan dan pemantauan
-                            intensif, terutama jika terjadi gangguan pernapasan, penurunan kesadaran, gangguan
-                            sirkulasi darah, atau terjadi infeksi.
+                        <div class="faq-item">
+                            <div class="faq-question">Kondisi tanda bahaya seperti apa yang harus segera dilaporkan
+                                kepada
+                                petugas bangsal?</div>
+                            <div class="faq-answer">
+                                Secara umum kondisi seperti sesak napas, penurunan kesadaran, demam tinggi, nyeri
+                                dada, dan ada alat invasif yang tercabut atau tidak berfungsi semestinya (detail dapat
+                                dilihat di video edukasi).
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Kondisi tanda bahaya seperti apa yang harus segera dilaporkan kepada
-                            petugas bangsal?</div>
-                        <div class="faq-answer">
-                            Secara umum kondisi seperti sesak napas, penurunan kesadaran, demam tinggi, nyeri
-                            dada, dan ada alat invasif yang tercabut atau tidak berfungsi semestinya (detail dapat
-                            dilihat di video edukasi).
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah peran keluarga dalam menjadi pendamping pasien?</div>
+                            <div class="faq-answer">
+                                Diharapkan keluarga tidak sekedar menemai pasien, tapi juga menjadi bagian dari sistem
+                                keselamatan pasien. Keluarga diharapkan mampu melakukan pengamatan yang baik,
+                                menjaga keamanan posisi alat, menjaga kebersihan, mendukung secara emosional, dan
+                                melakukan komunikasi yang cepat bila terjadi tanda bahaya pada pasien.
+                            </div>
                         </div>
-                    </div>
 
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah peran keluarga dalam menjadi pendamping pasien?</div>
-                        <div class="faq-answer">
-                            Diharapkan keluarga tidak sekedar menemai pasien, tapi juga menjadi bagian dari sistem
-                            keselamatan pasien. Keluarga diharapkan mampu melakukan pengamatan yang baik,
-                            menjaga keamanan posisi alat, menjaga kebersihan, mendukung secara emosional, dan
-                            melakukan komunikasi yang cepat bila terjadi tanda bahaya pada pasien.
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah keluarga boleh membantu perawatan?</div>
+                            <div class="faq-answer">
+                                Ya, dengan arahan perawat dan tenaga medis di ruangan.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah keluarga boleh membantu perawatan?</div>
-                        <div class="faq-answer">
-                            Ya, dengan arahan perawat dan tenaga medis di ruangan.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Bagaimana cara melaporkan kondisi tanda bahaya?</div>
-                        <div class="faq-answer">
-                            Segera tekan bel yang disediakan dan laporkan kondisi yang terjadi.
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="faq-section">
-            <div class="faq-container">
-
-                <div class="faq-category">
-                    <h3 class="faq-category-title">
-                        <i class="fa-solid fa-folder-open faq-category-icon"></i>
-                        NGT (Nasogastric Tube/Selang Sonde)
-                    </h3>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apa itu NGT (Sonde)?</div>
-                        <div class="faq-answer">
-                            NGT (Nasogastric Tube) adalah selang kecil yang dimasukkan melalui hidung menuju
-                            lambung untuk memberikan makanan, minuman, atau obat ketika pasien belum bisa makan
-                            secara normal melalui mulut.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah pasien boleh bergerak atau tidur miring?</div>
-                        <div class="faq-answer">
-                            Pasien tetap boleh miring kanan/kiri dan bergerak sesuai kondisi selama dipastikan selang
-                            tidak tertarik.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah pasien boleh minum atau makan lewat mulut?</div>
-                        <div class="faq-answer">
-                            Sebelum memberikan makanan atau minuman lewat mulut, sebaiknya tanyakan kepada
-                            perawat/dokter yang berjaga.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Berapa lama NGT dipasang? </div>
-                        <div class="faq-answer">
-                            Pada umumnya digunakan sementara sampai pasien mampu makan secara normal.
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="faq-section">
-            <div class="faq-container">
-
-                <div class="faq-category">
-                    <h3 class="faq-category-title">
-                        <i class="fa-solid fa-folder-open faq-category-icon"></i>
-                        TT (Tracheostomy Tube/Pipa Trakeostomi)
-                    </h3>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apa itu Tracheostomy Tube/ selang trakeostomi?</div>
-                        <div class="faq-answer">
-                            Selang/pipa yang dipasang khusus di lubang kecil yang dibuat di leher menuju saluran napas
-                            untuk membantu pasien bernapas.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apa alasan pasien dipasang pipa trakeostomi?</div>
-                        <div class="faq-answer">
-                            Secara umum, pasien dipasang pipa trakeostomi karena adanya sumbatan jalan napas
-                            seperti tumor, penyempitan saluran napas, maupun dahak berlebih, penurunan kesadaran, dan
-                            penyakit neurologis tertentu.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Bagaimana cara membantu pasien batuk dan mengeluarkan dahak?</div>
-                        <div class="faq-answer">
-                            Lakukan tepuk punggung ringan sesuai instruksi perawat dan penyedotan dahak dilakukan
-                            oleh tenaga kesehatan atau keluarga yang sudah dilatih khusus.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Bagaimana perawatan luka di sekitar trakeostomi?</div>
-                        <div class="faq-answer">
-                            Perawatan luka dilakukan oleh perawat. keluarga membantu dengan: menjaga kebersihan,
-                            Tidak menyentuh area tanpa cuci tangan, dan melaporkan bila ada bau tidak sedap, warna
-                            kemerahan, atau ada cairan yang keluar.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah pasien bisa makan dan minum? </div>
-                        <div class="faq-answer">
-                            Makan dan minum secara langsung dilakukan bila kemampuan menelan pasien sudah baik
-                            dan sudah mendapat izin dari perawat/dokter. Apabila kemampuan menelan belum baik, pasien
-                            akan dianjurkan menggunakan NGT dan diet khusus.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah pasien bisa berbicara mengeluarkan suara dengan jelas?</div>
-                        <div class="faq-answer">
-                            Pasien belum mampu mengeluarkan suara secara normal karena pita suara yang masih
-                            tertekan alat. Beberapa pasien dapat menggunakan speaking valve atas rekomendasi dokter.
+                        <div class="faq-item">
+                            <div class="faq-question">Bagaimana cara melaporkan kondisi tanda bahaya?</div>
+                            <div class="faq-answer">
+                                Segera tekan bel yang disediakan dan laporkan kondisi yang terjadi.
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="faq-section">
-            <div class="faq-container">
+            <!-- NGT -->
+            <section class="faq-section">
+                <div class="faq-container">
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <i class="fa-solid fa-folder-open faq-category-icon"></i>
+                            NGT (Nasogastric Tube/Selang Sonde)
+                        </h3>
 
-                <div class="faq-category">
-                    <h3 class="faq-category-title">
-                        <i class="fa-solid fa-folder-open faq-category-icon"></i>
-                        WSD (Water Seal Drain / Selang Drainase Dada)
-                    </h3>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apa itu WSD?</div>
-                        <div class="faq-answer">
-                            WSD (Water Seal Drain) adalah selang yang dipasang di dada untuk mengeluarkan udara
-                            atau cairan dari rongga paru agar paru dapat mengembang dengan baik.
+                        <div class="faq-item">
+                            <div class="faq-question">Apa itu NGT (Sonde)?</div>
+                            <div class="faq-answer">
+                                NGT (Nasogastric Tube) adalah selang kecil yang dimasukkan melalui hidung menuju
+                                lambung untuk memberikan makanan, minuman, atau obat ketika pasien belum bisa makan
+                                secara normal melalui mulut.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah pasien boleh bergerak atau duduk?</div>
-                        <div class="faq-answer">
-                            Boleh (bila tidak ada kontraindikasi), pasien dianjurkan bergerak ringan sesuai kondisi
-                            dengan memastikan selang tidak tertarik dan tabung harus ditempatkan lebih rendah dari dada
-                            pasien.
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah pasien boleh bergerak atau tidur miring?</div>
+                            <div class="faq-answer">
+                                Pasien tetap boleh miring kanan/kiri dan bergerak sesuai kondisi selama dipastikan
+                                selang
+                                tidak tertarik.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah umumnya terpasang WSD terasa nyeri di area pemasangan?</div>
-                        <div class="faq-answer">
-                            Pasien mungkin merasa tidak nyaman di area pemasangan. Laporkan jika nyeri berat agar
-                            perawat/dokter dapat memberikan penanganan nyeri agar tidak mengganggu proses
-                            pernapasan.
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah pasien boleh minum atau makan lewat mulut?</div>
+                            <div class="faq-answer">
+                                Sebelum memberikan makanan atau minuman lewat mulut, sebaiknya tanyakan kepada
+                                perawat/dokter yang berjaga.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Berapa lama WSD dipasang?</div>
-                        <div class="faq-answer">
-                            WSD akan dilepas jika udara/cairan sudah tidak keluar dan paru mengembang baik.
+                        <div class="faq-item">
+                            <div class="faq-question">Berapa lama NGT dipasang?</div>
+                            <div class="faq-answer">
+                                Pada umumnya digunakan sementara sampai pasien mampu makan secara normal.
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="faq-section">
-            <div class="faq-container">
 
-                <div class="faq-category">
-                    <h3 class="faq-category-title">
-                        <i class="fa-solid fa-folder-open faq-category-icon"></i>
-                        Kateter Urin
-                    </h3>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apa itu kateter urin?</div>
-                        <div class="faq-answer">
-                            Kateter urin adalah selang kecil yang dimasukkan melalui saluran kemih ke kandung kemih
-                            untuk mengeluarkan urin secara terus-menerus ke dalam kantong urin.
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang paling diwaspadai pada pasien yang terpasang selang
+                                sonde?</div>
+                            <div class="faq-answer">
+                                Selang yang tertarik dan bergeser posisi dapat menyebabkan tersedak saat makanan masuk
+                                ke saluran napas (jalur yang salah) dan berkembang menjadi infeksi paru-paru.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah pasien boleh bergerak atau duduk?</div>
-                        <div class="faq-answer">
-                            Boleh (bila tidak ada kontraindikasi), pasien dianjurkan bergerak ringan sesuai kondisi
-                            dengan memastikan selang tidak tertekuk dan posisi kantong urin lebih rendah dari kandung
-                            kemih.
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Mencuci tangan sebelum dan sesudah menyentuh selang atau memberi makan untuk
+                                        mencegah infeksi.</li>
+                                    <li>Memastikan posisi kepala pasien setengah duduk (30–45°) saat pemberian makan dan
+                                        30–60 menit setelahnya untuk mencegah muntah dan tersedak.</li>
+                                    <li>Memeriksa posisi dan panjang selang sesuai tanda yang dibuat perawat.</li>
+                                    <li>Memastikan selang tidak tertarik.</li>
+                                    <li>Membersihkan area hidung setiap hari dengan menggunakan kain bersih dan air
+                                        hangat agar tidak iritasi.</li>
+                                    <li>Memberikan makanan sesuai jadwal dan jumlah yang dianjurkan tenaga kesehatan dan
+                                        jangan menambah atau mengurangi tanpa instruksi.</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Berapa lama kateter dipasang?</div>
-                        <div class="faq-answer">
-                            Kateter akan dilepas jika pasien sudah mampu berkemih secara normal dan kondisi stabil.
-                            Kateter urin akan diganti berkala setelah minggu ke -1 hingga minggu ke-12 setelah
-                            pemasangan sesuai jenis kateter.
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang TIDAK BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Jangan menarik atau memasukkan kembali selang sendiri jika terlepas</li>
+                                    <li>Jangan memberikan makanan terlalu cepat</li>
+                                    <li>Jangan memberikan makanan tanpa posisi kepala dinaikkan</li>
+                                    <li>Jangan memberikan makanan bila masih terdapat sisa makanan/residu lebih dari 50
+                                        ml.</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="faq-section">
-            <div class="faq-container">
-
-                <div class="faq-category">
-                    <h3 class="faq-category-title">
-                        <i class="fa-solid fa-folder-open faq-category-icon"></i>
-                        Selang Drain Operasi
-                    </h3>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apa itu selang drain operasi?</div>
-                        <div class="faq-answer">
-                            Selang drain operasi adalah selang kecil yang dipasang di area luka operasi untuk
-                            mengeluarkan darah atau cairan sisa dari dalam tubuh agar penyembuhan lebih baik dan
-                            mencegah infeksi, serta untuk memantau perdarahan.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah pasien boleh bergerak?</div>
-                        <div class="faq-answer">
-                            Boleh (bila tidak ada kontraindikasi), pasien dianjurkan bergerak ringan sesuai kondisi
-                            dengan memastikan selang tidak tertekuk dan tertarik.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah terpasang drain terasa nyeri di area pemasangan?</div>
-                        <div class="faq-answer">
-                            Pasien mungkin merasa tidak nyaman di area pemasangan. Laporkan jika nyeri berat agar
-                            perawat/dokter dapat memberikan penanganan nyeri.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Berapa lama selang drain dipasang?</div>
-                        <div class="faq-answer">
-                            Drain akan dilepas oleh dokter jika sudah tidak diperlukan dengan mempertimbangkan
-                            jumlah cairan yang keluar dan kondisi penyembuhan luka.
+                        <div class="faq-item">
+                            <div class="faq-question">Apa tanda bahaya yang harus segera dilaporkan?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Pasien batuk terus-menerus atau tersedak saat makan</li>
+                                    <li>Muntah berulang</li>
+                                    <li>Perut kembung atau keras</li>
+                                    <li>Keluar cairan dari hidung atau mulut</li>
+                                    <li>Selang terlepas atau panjangnya berubah</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="faq-section">
-            <div class="faq-container">
+            <!-- TT -->
+            <section class="faq-section">
+                <div class="faq-container">
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <i class="fa-solid fa-folder-open faq-category-icon"></i>
+                            TT (Tracheostomy Tube/Pipa Trakeostomi)
+                        </h3>
 
-                <div class="faq-category">
-                    <h3 class="faq-category-title">
-                        <i class="fa-solid fa-folder-open faq-category-icon"></i>
-                        HD Cath (Hemodialysis Catheter/Kateter Hemodialisis)
-                    </h3>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apa itu HD Cath?</div>
-                        <div class="faq-answer">
-                            HD Cath adalah selang khusus yang dipasang pada pembuluh darah besar (biasanya di
-                            leher atau pangkal paha) untuk proses hemodialisis (cuci darah).
+                        <div class="faq-item">
+                            <div class="faq-question">Apa itu Tracheostomy Tube/ selang trakeostomi?</div>
+                            <div class="faq-answer">
+                                Selang/pipa yang dipasang khusus di lubang kecil yang dibuat di leher menuju saluran
+                                napas
+                                untuk membantu pasien bernapas.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah pasien boleh mandi?</div>
-                        <div class="faq-answer">
-                            Boleh. dengan memperhatikan hindari air mengenai area kateter dan jangan merendam
-                            tubuh (tidak boleh berendam).
+                        <div class="faq-item">
+                            <div class="faq-question">Apa alasan pasien dipasang pipa trakeostomi?</div>
+                            <div class="faq-answer">
+                                Secara umum, pasien dipasang pipa trakeostomi karena adanya sumbatan jalan napas
+                                seperti tumor, penyempitan saluran napas, maupun dahak berlebih, penurunan kesadaran,
+                                dan
+                                penyakit neurologis tertentu.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Apakah pasien boleh bergerak?</div>
-                        <div class="faq-answer">
-                            Boleh (bila tidak ada kontraindikasi), dengan memastikan selang tidak tertarik saat
-                            berpindah
-                            posisi dan tidak menindih area kateter saat tidur.
+                        <div class="faq-item">
+                            <div class="faq-question">Bagaimana cara membantu pasien batuk dan mengeluarkan dahak?</div>
+                            <div class="faq-answer">
+                                Lakukan tepuk punggung ringan sesuai instruksi perawat dan penyedotan dahak dilakukan
+                                oleh tenaga kesehatan atau keluarga yang sudah dilatih khusus.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Berapa lama selang drain dipasang?</div>
-                        <div class="faq-answer">
-                            Biasanya bersifat sementara. Jika pasien memerlukan hemodialisis jangka panjang, dokter
-                            akan merencanakan akses permanen (misalnya AV fistula).
+                        <div class="faq-item">
+                            <div class="faq-question">Bagaimana perawatan luka di sekitar trakeostomi?</div>
+                            <div class="faq-answer">
+                                Perawatan luka dilakukan oleh perawat. keluarga membantu dengan: menjaga kebersihan,
+                                Tidak menyentuh area tanpa cuci tangan, dan melaporkan bila ada bau tidak sedap, warna
+                                kemerahan, atau ada cairan yang keluar.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah pasien bisa makan dan minum?</div>
+                            <div class="faq-answer">
+                                Makan dan minum secara langsung dilakukan bila kemampuan menelan pasien sudah baik
+                                dan sudah mendapat izin dari perawat/dokter. Apabila kemampuan menelan belum baik,
+                                pasien
+                                akan dianjurkan menggunakan NGT dan diet khusus.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah pasien bisa berbicara mengeluarkan suara dengan jelas?
+                            </div>
+                            <div class="faq-answer">
+                                Pasien belum mampu mengeluarkan suara secara normal karena pita suara yang masih
+                                tertekan alat. Beberapa pasien dapat menggunakan speaking valve atas rekomendasi dokter.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang paling diwaspadai pada pasien yang terpasang pipa
+                                trakeostomi?</div>
+                            <div class="faq-answer">
+                                Pipa tersumbat oleh lendir (dahak) ataupun pipa terlepas sehingga jalan napas tertutup
+                                dan pasien dapat kekurangan oksigen.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Mencuci tangan sebelum dan sesudah menyentuh area trakeostomi</li>
+                                    <li>Menjaga area sekitar leher tetap bersih dan kering</li>
+                                    <li>Memastikan selang oksigen tidak tertarik, tertekuk, atau lepas</li>
+                                    <li>Memastikan posisi kepala pasien lebih tinggi daripada badan (30–45°)</li>
+                                    <li>Mengamati warna kulit sekitar trakheostomi, napas, dan jumlah dahak</li>
+                                    <li>Memastikan balon trakeostomi tidak kempes dan terlalu kencang</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang TIDAK BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Jangan melepas atau mengganti pipa sendiri</li>
+                                    <li>Jangan memasukkan benda apa pun ke dalam pipa</li>
+                                    <li>Jangan membersihkan bagian dalam tanpa instruksi tenaga kesehatan</li>
+                                    <li>Jangan menutup lubang trakeostomi</li>
+                                    <li>Jangan menarik tali pengikat terlalu kencang atau terlalu longgar, yaitu beri
+                                        jarak 2 jari dari leher pasien.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa tanda bahaya yang harus segera dilaporkan?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Sesak napas mendadak</li>
+                                    <li>Tampak banyak dahak</li>
+                                    <li>Napas berbunyi keras atau tidak terdengar aliran udara</li>
+                                    <li>Warna bibir/kuku kebiruan</li>
+                                    <li>Perdarahan dari lubang trakeostomi</li>
+                                    <li>Demam tinggi</li>
+                                    <li>Bengkak, kemerahan, atau bernanah di sekitar lubang trakeostomi</li>
+                                    <li>Pipa trakeostomi terlepas</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="faq-section">
-            <div class="faq-container">
+            <!-- WSD -->
+            <section class="faq-section">
+                <div class="faq-container">
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <i class="fa-solid fa-folder-open faq-category-icon"></i>
+                            WSD (Water Seal Drain / Selang Drainase Dada)
+                        </h3>
 
-                <div class="faq-category">
-                    <h3 class="faq-category-title">
-                        <i class="fa-solid fa-folder-open faq-category-icon"></i>
-                        IV Line (Infus / Jalur Intravena)
-                    </h3>
-
-                    <div class="faq-item">
-                        <div class="faq-question">Apa itu IV Line?</div>
-                        <div class="faq-answer">
-                            IV Line (infus) adalah selang kecil yang dipasang ke pembuluh darah untuk memberikan
-                            cairan, obat, atau nutrisi langsung ke dalam tubuh.
+                        <div class="faq-item">
+                            <div class="faq-question">Apa itu WSD?</div>
+                            <div class="faq-answer">
+                                WSD (Water Seal Drain) adalah selang yang dipasang di dada untuk mengeluarkan udara
+                                atau cairan dari rongga paru agar paru dapat mengembang dengan baik.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Bagaimana tanda infus normal?</div>
-                        <div class="faq-answer">
-                            Tidak ada nyeri berlebihan, tidak ada bengkak di sekitar area tusukan, tidak ada kemerahan,
-                            dan cairan menetes sesuai pengaturan.
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah pasien boleh bergerak atau duduk?</div>
+                            <div class="faq-answer">
+                                Boleh (bila tidak ada kontraindikasi), pasien dianjurkan bergerak ringan sesuai kondisi
+                                dengan memastikan selang tidak tertarik dan tabung harus ditempatkan lebih rendah dari
+                                dada
+                                pasien.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">Berapa lama selang drain dipasang?</div>
-                        <div class="faq-answer">
-                            Tergantung kebutuhan terapi. Lokasi infus akan diganti secara berkala (hari ke-3 hingga hari
-                            ke-4 pemasangan) untuk mencegah infeksi.
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah umumnya terpasang WSD terasa nyeri di area pemasangan?
+                            </div>
+                            <div class="faq-answer">
+                                Pasien mungkin merasa tidak nyaman di area pemasangan. Laporkan jika nyeri berat agar
+                                perawat/dokter dapat memberikan penanganan nyeri agar tidak mengganggu proses
+                                pernapasan.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Berapa lama WSD dipasang?</div>
+                            <div class="faq-answer">
+                                WSD akan dilepas jika udara/cairan sudah tidak keluar dan paru mengembang baik.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang paling diwaspadai pada pasien yang terpasang selang
+                                drainase dada?</div>
+                            <div class="faq-answer">
+                                Selang tersumbat, terlipat, atau lepas sehingga udara/cairan menumpuk kembali di dada
+                                yang menyebabkan pasien sesak napas.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Mencuci tangan sebelum dan sesudah menyentuh area sekitar selang</li>
+                                    <li>Memastikan tabung WSD selalu berada lebih rendah dari dada pasien</li>
+                                    <li>Memastikan selang tidak tertekuk atau tertindih</li>
+                                    <li>Mengamati jumlah dan warna cairan dalam tabung WSD</li>
+                                    <li>Memastikan sambungan selang tidak lepas</li>
+                                    <li>Mengalirkan tumpukan cairan/darah di sepanjang selang ke dalam tabung agar tidak
+                                        membuat buntu selang</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang TIDAK BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Jangan mengangkat tabung WSD lebih tinggi dari dada</li>
+                                    <li>Jangan mengosongkan atau membuka tabung sendiri</li>
+                                    <li>Jangan menjepit (clamp) selang tanpa instruksi tenaga kesehatan</li>
+                                    <li>Jangan menarik selang</li>
+                                    <li>Jangan memiringkan tabung hingga air tumpah</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa tanda bahaya yang harus segera dilaporkan?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Sesak napas mendadak</li>
+                                    <li>Nyeri dada bertambah berat</li>
+                                    <li>Perdarahan banyak atau cairan tiba-tiba sangat banyak</li>
+                                    <li>Tidak ada cairan sama sekali padahal sebelumnya ada</li>
+                                    <li>Selang terlepas atau sambungan terbuka</li>
+                                    <li>Air dalam tabung tumpah</li>
+                                    <li>Demam</li>
+                                    <li>Area sekitar luka bengkak, merah, atau bernanah</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </section>
 
-            </div>
-        </section>
+            <!-- Kateter Urin -->
+            <section class="faq-section">
+                <div class="faq-container">
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <i class="fa-solid fa-folder-open faq-category-icon"></i>
+                            Kateter Urin
+                        </h3>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa itu kateter urin?</div>
+                            <div class="faq-answer">
+                                Kateter urin adalah selang kecil yang dimasukkan melalui saluran kemih ke kandung kemih
+                                untuk mengeluarkan urin secara terus-menerus ke dalam kantong urin.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah pasien boleh bergerak atau duduk?</div>
+                            <div class="faq-answer">
+                                Boleh (bila tidak ada kontraindikasi), pasien dianjurkan bergerak ringan sesuai kondisi
+                                dengan memastikan selang tidak tertekuk dan posisi kantong urin lebih rendah dari
+                                kandung
+                                kemih.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Berapa lama kateter dipasang?</div>
+                            <div class="faq-answer">
+                                Kateter akan dilepas jika pasien sudah mampu berkemih secara normal dan kondisi stabil.
+                                Kateter urin akan diganti berkala setelah minggu ke -1 hingga minggu ke-12 setelah
+                                pemasangan sesuai jenis kateter.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa komplikasi yang sering terjadi pada pasien yang menggunakan
+                                kateter urin?</div>
+                            <div class="faq-answer">
+                                Terjadi infeksi salurah kemih (ISK) yang dapat memicu infeksi dengan respon berlebihan
+                                seluruh tubuh (sepsis) apabila tidak tertangani dengan tepat.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Mencuci tangan sebelum dan sesudah menyentuh selang atau kantong urin</li>
+                                    <li>Memastikan kantong urin selalu berada lebih rendah dari kandung kemih</li>
+                                    <li>Memastikan selang tidak tertekuk, tertarik, atau tertindih</li>
+                                    <li>Memastikan kantong urin tidak menyentuh lantai</li>
+                                    <li>Mengamati warna, kejernihan, dan jumlah urin</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang TIDAK BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Jangan menarik selang kateter</li>
+                                    <li>Jangan membuka sambungan selang dan kantong urin</li>
+                                    <li>Jangan mengosongkan kantong tanpa instruksi tenaga kesehatan (kecuali sudah
+                                        diajarkan secara khusus)</li>
+                                    <li>Jangan menaikkan kantong urin lebih tinggi dari kandung kemih</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa tanda bahaya yang harus segera dilaporkan?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Nyeri perut bawah atau kandung kemih terasa penuh atau anyang-anyangan</li>
+                                    <li>Urin sangat keruh atau berbau tajam</li>
+                                    <li>Urin bercampur darah</li>
+                                    <li>Demam</li>
+                                    <li>Selang terlepas</li>
+                                    <li>Urin rembes keluar di sekitar selang</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Selang Drain Operasi -->
+            <section class="faq-section">
+                <div class="faq-container">
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <i class="fa-solid fa-folder-open faq-category-icon"></i>
+                            Selang Drain Operasi
+                        </h3>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa itu selang drain operasi?</div>
+                            <div class="faq-answer">
+                                Selang drain operasi adalah selang kecil yang dipasang di area luka operasi untuk
+                                mengeluarkan darah atau cairan sisa dari dalam tubuh agar penyembuhan lebih baik dan
+                                mencegah infeksi, serta untuk memantau perdarahan.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah pasien boleh bergerak?</div>
+                            <div class="faq-answer">
+                                Boleh (bila tidak ada kontraindikasi), pasien dianjurkan bergerak ringan sesuai kondisi
+                                dengan memastikan selang tidak tertekuk dan tertarik.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah terpasang drain terasa nyeri di area pemasangan?</div>
+                            <div class="faq-answer">
+                                Pasien mungkin merasa tidak nyaman di area pemasangan. Laporkan jika nyeri berat agar
+                                perawat/dokter dapat memberikan penanganan nyeri.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Berapa lama selang drain dipasang?</div>
+                            <div class="faq-answer">
+                                Drain akan dilepas oleh dokter jika sudah tidak diperlukan dengan mempertimbangkan
+                                jumlah cairan yang keluar dan kondisi penyembuhan luka.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang paling diwaspadai pada pasien yang terpasang selang
+                                drain?</div>
+                            <div class="faq-answer">
+                                Produk cairan merah terang yang meningkat jumlahnya secara tiba-tiba dan menyebabkan
+                                pasien pucat atau lemas.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Mencuci tangan sebelum dan sesudah menyentuh area sekitar drain</li>
+                                    <li>Memastikan selang tidak tertekuk atau tertarik</li>
+                                    <li>Memastikan tabung/botol penampung selalu dalam posisi aman dan tidak tertarik
+                                    </li>
+                                    <li>Mengamati jumlah dan warna cairan</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang TIDAK BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Jangan menarik atau memutar selang drain</li>
+                                    <li>Jangan membuka atau mengosongkan drain tanpa instruksi</li>
+                                    <li>Jangan melepas jahitan atau plester sendiri</li>
+                                    <li>Jangan mengoleskan obat/krim tanpa anjuran tenaga kesehatan</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa tanda bahaya yang harus segera dilaporkan?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Cairan keluar sangat banyak tiba-tiba</li>
+                                    <li>Cairan berbau tidak sedap</li>
+                                    <li>Tidak ada cairan sama sekali padahal sebelumnya ada</li>
+                                    <li>Nyeri bertambah hebat</li>
+                                    <li>Luka tampak bengkak, merah, atau bernanah</li>
+                                    <li>Drain terlepas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HD Cath -->
+            <section class="faq-section">
+                <div class="faq-container">
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <i class="fa-solid fa-folder-open faq-category-icon"></i>
+                            HD Cath (Hemodialysis Catheter/Kateter Hemodialisis)
+                        </h3>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa itu HD Cath?</div>
+                            <div class="faq-answer">
+                                HD Cath adalah selang khusus yang dipasang pada pembuluh darah besar (biasanya di
+                                leher atau pangkal paha) untuk proses hemodialisis (cuci darah).
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah pasien boleh mandi?</div>
+                            <div class="faq-answer">
+                                Boleh. dengan memperhatikan hindari air mengenai area kateter dan jangan merendam
+                                tubuh (tidak boleh berendam).
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah pasien boleh bergerak?</div>
+                            <div class="faq-answer">
+                                Boleh (bila tidak ada kontraindikasi), dengan memastikan selang tidak tertarik saat
+                                berpindah
+                                posisi dan tidak menindih area kateter saat tidur.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Berapa lama kateter hemodialisis dipasang?</div>
+                            <div class="faq-answer">
+                                Biasanya bersifat sementara. Jika pasien memerlukan hemodialisis jangka panjang, dokter
+                                akan merencanakan akses permanen (misalnya AV fistula).
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang paling diwaspadai pada pasien yang terpasang kateter
+                                hemodialisa?</div>
+                            <div class="faq-answer">
+                                Infeksi dapat langsung masuk ke aliran darah besar yang dapat berkembang menjadi infeksi
+                                dengan respon berlebihan seluruh tubuh (sepsis).
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Mencuci tangan sebelum dan sesudah menyentuh area sekitar kateter</li>
+                                    <li>Memastikan balutan tetap bersih dan kering</li>
+                                    <li>Mengamati apakah ada kemerahan, bengkak, atau cairan di sekitar luka</li>
+                                    <li>Memastikan selang tidak tertarik saat pasien bergerak</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang TIDAK BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Jangan membuka atau mengganti balutan sendiri (kecuali sudah diajarkan secara
+                                        khusus)</li>
+                                    <li>Jangan menyentuh ujung kateter</li>
+                                    <li>Jangan menarik atau menekuk selang</li>
+                                    <li>Jangan membasahi area kateter</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa tanda bahaya yang harus segera dilaporkan?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Demam</li>
+                                    <li>Kemerahan, bengkak, nyeri di area kateter</li>
+                                    <li>Perdarahan dari lokasi pemasangan</li>
+                                    <li>Kateter terlepas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- IV Line -->
+            <section class="faq-section">
+                <div class="faq-container">
+                    <div class="faq-category">
+                        <h3 class="faq-category-title">
+                            <i class="fa-solid fa-folder-open faq-category-icon"></i>
+                            IV Line (Infus / Jalur Intravena)
+                        </h3>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa itu IV Line?</div>
+                            <div class="faq-answer">
+                                IV Line (infus) adalah selang kecil yang dipasang ke pembuluh darah untuk memberikan
+                                cairan, obat, atau nutrisi langsung ke dalam tubuh.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Bagaimana tanda infus normal?</div>
+                            <div class="faq-answer">
+                                Tidak ada nyeri berlebihan, tidak ada bengkak di sekitar area tusukan, tidak ada
+                                kemerahan,
+                                dan cairan menetes sesuai pengaturan.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Berapa lama selang drain dipasang?</div>
+                            <div class="faq-answer">
+                                Tergantung kebutuhan terapi. Lokasi infus akan diganti secara berkala (hari ke-3 hingga
+                                hari
+                                ke-4 pemasangan) untuk mencegah infeksi.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa komplikasi yang sering terjadi pada pasien yang menggunakan
+                                selang infus?</div>
+                            <div class="faq-answer">
+                                Terjadi infeksi di area infus dan perradangan pembuluh darah (flebitis).
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Mencuci tangan sebelum dan sesudah menyentuh area sekitar infus</li>
+                                    <li>Memastikan selang tidak tertarik atau tertekuk</li>
+                                    <li>Memastikan cairan infus menetes sesuai (tidak berhenti tiba-tiba)</li>
+                                    <li>Mengamati area sekitar area penusukan apakah bengkak atau kemerahan</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa yang TIDAK BOLEH dilakukan keluarga?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Jangan mengatur kecepatan tetesan sendiri</li>
+                                    <li>Jangan membuka sambungan selang</li>
+                                    <li>Jangan menyentuh bagian area penusukan atau konektor</li>
+                                    <li>Jangan melepas plester sendiri</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apa tanda bahaya yang harus segera dilaporkan?</div>
+                            <div class="faq-answer">
+                                <ul>
+                                    <li>Area pemasangan infus bengkak atau keras</li>
+                                    <li>Nyeri hebat di lokasi pemasangan infus</li>
+                                    <li>Kulit kemerahan atau terasa panas</li>
+                                    <li>Cairan infus tidak menetes</li>
+                                    <li>Darah mengalir kembali ke selang</li>
+                                    <li>Demam</li>
+                                    <li>Kateter infus terlepas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
 
         <!-- Footer -->
         <footer>
             <div class="footer-content">
                 <span>SICU RSUP Dr. Sardjito Yogyakarta</span>
-                <span class="separator">•</span>
-                <a href="mailto:rsssicu@gmail.com" class="footer-link">
-                    <i class="fa-solid fa-envelope"></i>rsssicu@gmail.com
-                </a>
-                <span class="separator">•</span>
-                <a href="https://wa.me/6282220360243" target="_blank" class="footer-link">
-                    <i class="fa-brands fa-whatsapp"></i> 0822 2036 0243
-                </a>
+                <div class="footer-links">
+                    <a href="mailto:rsssicu@gmail.com" class="footer-link">
+                        <i class="fa-solid fa-envelope"></i>rsssicu@gmail.com
+                    </a>
+                    <span class="separator">•</span>
+                    <a href="https://wa.me/6282220360243" target="_blank" class="footer-link">
+                        <i class="fa-brands fa-whatsapp"></i> 0822 2036 0243
+                    </a>
+                </div>
             </div>
         </footer>
     </div>
 
     <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fa-solid fa-arrow-up"></i>
-    </div>
+    </button>
 
     <script>
         // FAQ Accordion functionality
@@ -789,7 +1144,6 @@
                 const question = item.querySelector('.faq-question');
 
                 question.addEventListener('click', () => {
-                    // Toggle current item
                     item.classList.toggle('active');
                 });
             });
@@ -798,7 +1152,6 @@
         // Back to Top Button functionality
         const backToTopButton = document.getElementById('backToTop');
 
-        // Show button when user scrolls down 300px
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 backToTopButton.classList.add('show');
@@ -807,7 +1160,6 @@
             }
         });
 
-        // Scroll to top when button is clicked
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,

@@ -11,19 +11,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fdf9;
-            --accent-green: #5cb85c;
-            --accent-green-dark: #4a934a;
-            --accent-green-light: #7ec87e;
-            --text-primary: #2c3e2c;
-            --text-secondary: #5a6d5a;
-            --border-color: rgba(92, 184, 92, 0.2);
+            --bg-gradient-start: #c8e8f2;
+            --bg-gradient-end: #dff0f7;
+            --accent-blue: #1A85B3;
+            --accent-blue-dark: #146d94;
+            --accent-blue-light: #3AA0CC;
+            --btn-gradient-start: #1A85B3;
+            --btn-gradient-end: #3AA0CC;
+            --text-primary: #1a3a4a;
+            --text-secondary: #4a7080;
+            --text-white: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --shadow-color: rgba(77, 184, 215, 0.2);
+            --border-color: rgba(77, 184, 215, 0.2);
         }
 
         * {
@@ -33,118 +38,98 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg-primary);
+            font-family: 'Poppins', 'DM Sans', sans-serif;
+            background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
             color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            right: -20%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(92, 184, 92, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            bottom: -30%;
-            left: -20%;
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(126, 200, 126, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .container {
-            max-width: 1200px;
+        .page-wrapper {
+            max-width: 680px;
             margin: 0 auto;
-            padding: 0 2rem;
+            background: linear-gradient(180deg, var(--bg-gradient-start) 0%, #f0fafd 40%, #ffffff 100%);
+            min-height: 100vh;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
             position: relative;
-            z-index: 1;
+            padding: 0 0 2rem;
         }
 
         /* Header */
-        header {
-            padding: 3rem 0 2rem;
+        .page-header {
+            background: linear-gradient(135deg, var(--accent-blue-dark), var(--accent-blue), var(--accent-blue-light));
+            padding: 2rem 1.5rem 2.5rem;
             text-align: center;
             position: relative;
-            animation: fadeInDown 1s ease-out;
+            animation: fadeInDown 0.8s ease-out;
         }
 
         .back-button {
             position: absolute;
-            top: 2rem;
-            left: 2rem;
-            background: var(--accent-green);
+            top: 1.2rem;
+            left: 1.2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 15px rgba(92, 184, 92, 0.3);
+            gap: 0.4rem;
         }
 
         .back-button:hover {
-            background: var(--accent-green-dark);
+            background: rgba(255, 255, 255, 0.35);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(92, 184, 92, 0.4);
         }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            margin-top: 4rem;
-            letter-spacing: -0.02em;
+        .page-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            margin-top: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
+        .page-header .subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
             font-weight: 400;
-            max-width: 800px;
+            max-width: 500px;
             margin: 0 auto;
+        }
+
+        /* Content Area */
+        .content-area {
+            padding: 2rem 1.5rem;
         }
 
         /* Video Grid */
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin: 4rem 0;
-            animation: fadeInUp 1s ease-out 0.3s both;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
         .video-card {
-            background: var(--bg-secondary);
-            border-radius: 20px;
+            background: var(--card-bg);
+            border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            box-shadow: 0 10px 40px rgba(92, 184, 92, 0.1);
+            box-shadow: 0 4px 20px var(--shadow-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .video-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(92, 184, 92, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(77, 184, 215, 0.3);
         }
 
         .video-wrapper {
@@ -164,37 +149,45 @@
         }
 
         .video-info {
-            padding: 1.5rem;
+            padding: 1.2rem;
         }
 
         .video-title {
-            font-size: 1.3rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .video-description {
-            font-size: 1rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem 0;
+            padding: 1.5rem;
             color: var(--text-secondary);
             border-top: 1px solid var(--border-color);
-            margin-top: 6rem;
+            margin-top: 2rem;
+            font-size: 0.8rem;
         }
 
         .footer-content {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            gap: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .footer-link {
@@ -202,23 +195,58 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
             transition: color 0.3s ease;
+            font-size: 0.8rem;
         }
 
         .footer-link:hover {
-            color: var(--accent-green);
+            color: var(--accent-blue);
         }
 
         .separator {
-            color: var(--border-color);
+            color: rgba(77, 184, 215, 0.3);
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--btn-gradient-start), var(--btn-gradient-end));
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            border: none;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: linear-gradient(135deg, var(--accent-blue-dark), var(--accent-blue));
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(77, 184, 215, 0.5);
         }
 
         /* Animations */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
-                transform: translateY(-30px);
+                transform: translateY(-20px);
             }
 
             to {
@@ -230,7 +258,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
 
             to {
@@ -239,179 +267,142 @@
             }
         }
 
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--accent-green);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(92, 184, 92, 0.4);
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            z-index: 1000;
-        }
-
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background: var(--accent-green-dark);
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(92, 184, 92, 0.6);
-        }
-
-        /* Responsive - Tablet */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
+        /* Responsive */
+        @media (min-width: 681px) {
+            body {
+                background: linear-gradient(135deg, #c8e6ef 0%, #e0f2f7 50%, #f5fbfd 100%);
             }
 
-            .back-button {
-                position: relative;
-                top: 0;
-                left: 0;
-            }
-
-            .video-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .back-to-top {
-                bottom: 1.5rem;
-                right: 1.5rem;
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
+            .page-wrapper {
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+                border-radius: 24px;
+                min-height: calc(100vh - 4rem);
+                overflow: hidden;
             }
         }
 
-        /* Responsive - Mobile */
         @media (max-width: 480px) {
             .video-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
                 max-width: 320px;
-                margin-left: auto;
-                margin-right: auto;
+                margin: 0 auto;
+            }
+
+            .page-header h1 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="page-wrapper">
         <!-- Header -->
-        <header>
+        <div class="page-header">
             <a href="index.html" class="back-button">
-                <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
+                <i class="fa-solid fa-arrow-left"></i> Kembali
             </a>
             <h1>Video Edukasi</h1>
-            <p class="subtitle">Kumpulan video edukasi mengenai kondisi khusus pasien yang dapat dipilih dan
-                diputar ulang sesuai kebutuhan</p>
-        </header>
+            <p class="subtitle">Video edukasi yang mudah dipahami mengenai perawatan alat-alat medis khusus yang masih
+                digunakan pasien paska perawatan intensif, yang mana dapat menjadi risiko mengancam keselamatan pasien
+                bila tidak dilakukan pemantauan dan perawatan yang tepat.</p>
+        </div>
 
-        <!-- Video Grid -->
-        <div class="video-grid">
-            <!-- Video 1 -->
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/AAhOYprTV9M" frameborder="0"
-                        allowfullscreen></iframe>
+        <!-- Content -->
+        <div class="content-area">
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/AAhOYprTV9M" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Pengenalan Transition Care</h3>
+                        <p class="video-description">Video pengenalan mengenai layanan transition care dan pentingnya
+                            perawatan transisi untuk pasien.</p>
+                    </div>
                 </div>
-                <div class="video-info">
-                    <h3 class="video-title">Pengenalan Transition Care</h3>
-                    <p class="video-description">Video pengenalan mengenai layanan transition care dan pentingnya
-                        perawatan transisi untuk pasien.</p>
-                </div>
-            </div>
 
-            <!-- Video 2 -->
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Perawatan Pasien Diabetes</h3>
+                        <p class="video-description">Panduan lengkap merawat pasien dengan kondisi diabetes di rumah.
+                        </p>
+                    </div>
                 </div>
-                <div class="video-info">
-                    <h3 class="video-title">Perawatan Pasien Diabetes</h3>
-                    <p class="video-description">Panduan lengkap merawat pasien dengan kondisi diabetes di rumah.</p>
-                </div>
-            </div>
 
-            <!-- Video 3 -->
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Perawatan Luka Pasca Operasi</h3>
+                        <p class="video-description">Cara merawat luka pasca operasi dengan benar untuk mencegah
+                            infeksi.</p>
+                    </div>
                 </div>
-                <div class="video-info">
-                    <h3 class="video-title">Perawatan Luka Pasca Operasi</h3>
-                    <p class="video-description">Cara merawat luka pasca operasi dengan benar untuk mencegah infeksi.
-                    </p>
-                </div>
-            </div>
 
-            <!-- Video 4 -->
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <!-- Video 4 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Manajemen Obat di Rumah</h3>
+                        <p class="video-description">Tips mengatur dan memberikan obat kepada pasien dengan aman dan
+                            tepat
+                            waktu.</p>
+                    </div>
                 </div>
-                <div class="video-info">
-                    <h3 class="video-title">Manajemen Obat di Rumah</h3>
-                    <p class="video-description">Tips mengatur dan memberikan obat kepada pasien dengan aman dan tepat
-                        waktu.</p>
-                </div>
-            </div>
 
-            <!-- Video 5 -->
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <!-- Video 5 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Perawatan Pasien Stroke</h3>
+                        <p class="video-description">Panduan merawat pasien stroke di rumah dan membantu proses
+                            rehabilitasi.</p>
+                    </div>
                 </div>
-                <div class="video-info">
-                    <h3 class="video-title">Perawatan Pasien Stroke</h3>
-                    <p class="video-description">Panduan merawat pasien stroke di rumah dan membantu proses
-                        rehabilitasi.</p>
-                </div>
-            </div>
 
-            <!-- Video 6 -->
-            <div class="video-card">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <h3 class="video-title">Nutrisi untuk Pasien</h3>
-                    <p class="video-description">Pentingnya nutrisi yang tepat untuk mendukung pemulihan pasien.</p>
+                <!-- Video 6 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Nutrisi untuk Pasien</h3>
+                        <p class="video-description">Pentingnya nutrisi yang tepat untuk mendukung pemulihan pasien.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -420,28 +411,27 @@
         <footer>
             <div class="footer-content">
                 <span>SICU RSUP Dr. Sardjito Yogyakarta</span>
-                <span class="separator">•</span>
-                <a href="mailto:rsssicu@gmail.com" class="footer-link">
-                    <i class="fa-solid fa-envelope"></i>rsssicu@gmail.com
-                </a>
-                <span class="separator">•</span>
-                <a href="https://wa.me/6282220360243" target="_blank" class="footer-link">
-                    <i class="fa-brands fa-whatsapp"></i> 0822 2036 0243
-                </a>
+                <div class="footer-links">
+                    <a href="mailto:rsssicu@gmail.com" class="footer-link">
+                        <i class="fa-solid fa-envelope"></i>rsssicu@gmail.com
+                    </a>
+                    <span class="separator">•</span>
+                    <a href="https://wa.me/6282220360243" target="_blank" class="footer-link">
+                        <i class="fa-brands fa-whatsapp"></i> 0822 2036 0243
+                    </a>
+                </div>
             </div>
         </footer>
     </div>
 
     <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fa-solid fa-arrow-up"></i>
-    </div>
+    </button>
 
     <script>
-        // Back to Top Button functionality
         const backToTopButton = document.getElementById('backToTop');
 
-        // Show button when user scrolls down 300px
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 backToTopButton.classList.add('show');
@@ -450,7 +440,6 @@
             }
         });
 
-        // Scroll to top when button is clicked
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
