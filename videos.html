@@ -242,6 +242,91 @@
             box-shadow: 0 8px 25px rgba(77, 184, 215, 0.5);
         }
 
+        /* Maintenance View */
+        .maintenance-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 1.5rem;
+            min-height: 50vh;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .maintenance-icon-wrapper {
+            width: 100px;
+            height: 100px;
+            background: rgba(26, 133, 179, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .maintenance-icon {
+            font-size: 3rem;
+            color: var(--accent-blue);
+            animation: slowRotate 10s linear infinite;
+        }
+
+        .maintenance-icon-wrapper::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--accent-blue-light);
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+        }
+
+        .maintenance-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.2rem;
+            line-height: 1.3;
+        }
+
+        .maintenance-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 440px;
+            line-height: 1.8;
+            margin: 0 auto;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes slowRotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         /* Animations */
         @keyframes fadeInDown {
             from {
@@ -311,99 +396,16 @@
 
         <!-- Content -->
         <div class="content-area">
-            <div class="video-grid">
-                <!-- Video 1 -->
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/AAhOYprTV9M" frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3 class="video-title">Pengenalan Transition Care</h3>
-                        <p class="video-description">Video pengenalan mengenai layanan transition care dan pentingnya
-                            perawatan transisi untuk pasien.</p>
-                    </div>
+            <div class="maintenance-container">
+                <div class="maintenance-icon-wrapper">
+                    <i class="fa-solid fa-screwdriver-wrench maintenance-icon"></i>
                 </div>
-
-                <!-- Video 2 -->
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3 class="video-title">Perawatan Pasien Diabetes</h3>
-                        <p class="video-description">Panduan lengkap merawat pasien dengan kondisi diabetes di rumah.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Video 3 -->
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3 class="video-title">Perawatan Luka Pasca Operasi</h3>
-                        <p class="video-description">Cara merawat luka pasca operasi dengan benar untuk mencegah
-                            infeksi.</p>
-                    </div>
-                </div>
-
-                <!-- Video 4 -->
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3 class="video-title">Manajemen Obat di Rumah</h3>
-                        <p class="video-description">Tips mengatur dan memberikan obat kepada pasien dengan aman dan
-                            tepat
-                            waktu.</p>
-                    </div>
-                </div>
-
-                <!-- Video 5 -->
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3 class="video-title">Perawatan Pasien Stroke</h3>
-                        <p class="video-description">Panduan merawat pasien stroke di rumah dan membantu proses
-                            rehabilitasi.</p>
-                    </div>
-                </div>
-
-                <!-- Video 6 -->
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe width="560" height="315"
-                            src="https://www.youtube.com/embed/bo7-8BU69_k?si=D0JIMpGm5NUkaHRn"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3 class="video-title">Nutrisi untuk Pasien</h3>
-                        <p class="video-description">Pentingnya nutrisi yang tepat untuk mendukung pemulihan pasien.</p>
-                    </div>
-                </div>
+                <h2 class="maintenance-title">Mohon Maaf, Menu Video Edukasi Sedang Dalam Penyempurnaan</h2>
+                <p class="maintenance-text">
+                    Saat ini kami sedang memperbarui konten video kami untuk memberikan informasi yang lebih lengkap dan
+                    akurat bagi Anda. Video edukasi akan segera hadir kembali untuk membantu proses perawatan pemulihan
+                    pasien di rumah. Terima kasih atas kesabaran Anda.
+                </p>
             </div>
         </div>
 
